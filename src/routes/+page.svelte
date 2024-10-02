@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-	import { enhance } from '$app/forms';
+	import VideoItem from '$lib/components/VideoItem.svelte';
 	export let data: PageData;
 </script>
 
@@ -40,27 +40,7 @@
 	{:else if data.results && data.results.length > 0}
 		<div class="grid grid-cols-1 gap-6">
 			{#each data.results as video}
-				<div class="flex flex-col lg:flex-row border rounded-lg overflow-hidden shadow-lg">
-					<div class="bg-gray-200 lg:w-[640px] lg:h-[360px] flex-shrink-0">
-						{#if video.thumbnail}
-							<img src={video.thumbnail} alt={video.title} class="w-full h-full object-cover" />
-						{:else}
-							<div class="w-full h-full flex items-center justify-center text-gray-400">
-								<span class="text-4xl">No Image</span>
-							</div>
-						{/if}
-					</div>
-					<div class="flex-grow p-4">
-						<h2 class="text-xl font-semibold mb-2">
-							<a href={`https://www.youtube.com/watch?v=${video.id}`} target="_blank"
-								>{video.title}</a
-							>
-						</h2>
-						<p class="text-sm text-gray-600 mb-2">Comments: {video.commentCount}</p>
-						<pre
-							class="text-sm text-gray-700 line-clamp-6 text-wrap font-sans">{video.description}</pre>
-					</div>
-				</div>
+				<VideoItem {video} />
 			{/each}
 		</div>
 	{:else}
