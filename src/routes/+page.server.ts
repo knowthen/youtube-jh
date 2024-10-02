@@ -1,25 +1,26 @@
 import type { PageServerLoad } from './$types';
+import { getYoutubeVideos } from '$lib/server/api';
 
 export const load: PageServerLoad = async ({ url }) => {
 	const searchQuery = url.searchParams.get('q');
-	const order = url.searchParams.get('order');
+	const order = (url.searchParams.get('order') || 'relevance') as 'relevance' | 'date' | 'rating';
+	if (!searchQuery) {
+		return { searchQuery, order, results: [] };
+	}
+	if (!['relevance', 'date', 'rating'].includes(order)) {
+		return { searchQuery, order, results: [] };
+	}
+	try {
+		const results = await getYoutubeVideos(searchQuery, order);
 
-	const results = [
-		{
-			title: 'Video 1',
-			description: 'Description 1',
-			thumbnail: 'https://via.placeholder.com/1280x720',
-			videoId: 'dQw4w9WgXcQ',
-			commentCount: 100
-		},
-		{
-			title: 'Video 2',
-			description: 'Description 2',
-			thumbnail: 'https://via.placeholder.com/1280x720',
-			videoId: 'dQw4w9WgXcQ',
-			commentCount: 50
-		}
-	];
-
-	return { searchQuery, order, results };
+		return { searchQuery, order, results };
+	} catch (error) {
+		console.error('Error in load function:', error);
+		return {
+			searchQuery,
+			order,
+			results: [],
+			error: error instanceof Error ? error.message : String(error)
+		};
+	}
 };
