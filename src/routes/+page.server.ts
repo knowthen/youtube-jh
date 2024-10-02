@@ -1,5 +1,6 @@
 import type { PageServerLoad } from './$types';
 import { getYoutubeVideos } from '$lib/server/api';
+import logger from '$lib/server/logger';
 
 export const load: PageServerLoad = async ({ url }) => {
 	const searchQuery = url.searchParams.get('q');
@@ -15,7 +16,7 @@ export const load: PageServerLoad = async ({ url }) => {
 
 		return { searchQuery, order, results };
 	} catch (error) {
-		console.error('Error in load function:', error);
+		logger.error('Error in load function:', error);
 		return {
 			searchQuery,
 			order,

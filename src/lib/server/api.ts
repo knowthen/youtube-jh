@@ -1,5 +1,6 @@
 import { google } from 'googleapis';
 import { YOUTUBE_API_KEY } from '$env/static/private';
+import logger from '$lib/server/logger';
 
 const youtube = google.youtube({
 	version: 'v3',
@@ -41,7 +42,7 @@ export async function getYoutubeVideos(
 		});
 		return results;
 	} catch (error) {
-		console.error(error);
+		logger.error('Error in getYoutubeVideos:', error);
 		throw new Error('Failed to fetch YouTube videos');
 	}
 }
