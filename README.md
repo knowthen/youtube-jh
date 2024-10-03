@@ -17,7 +17,11 @@ This project was created with the Sveltekit starter template via the command:
 npm create svelte@latest youtube-jh
 ```
 
+commit: f6ad018
+
 Then I setup TailwindCSS.
+
+commit: 378befa
 
 The result of these two steps created the following directory structure:
 
