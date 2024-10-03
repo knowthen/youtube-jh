@@ -60,7 +60,7 @@ All other modifications were made by me.
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/knowthen/youtube-jh
+   git clone git@github.com:knowthen/youtube-jh.git
    ```
 
 2. Install dependencies:
