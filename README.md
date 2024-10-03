@@ -1,38 +1,80 @@
-# create-svelte
+# YouTube Video Search
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+A simple YouTube video search app built with Sveltekit.
 
-## Creating a project
+## Features
 
-If you're seeing this, you've probably already done this step. Congrats!
+- Search for videos
+- Order results by relevance, date or rating
+- View video thumbnails, titles, descriptions, and comments
+- Open videos in YouTube
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+## Project Creation
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+This project was created with the Sveltekit starter template via the command:
 
 ```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+npm create svelte@latest youtube-jh
 ```
 
-## Building
+Then I setup TailwindCSS.
 
-To create a production version of your app:
+The result of these two steps created the following directory structure:
 
 ```bash
-npm run build
+.
+├── README.md
+├── eslint.config.js
+├── package-lock.json
+├── package.json
+├── playwright.config.ts
+├── postcss.config.js
+├── src
+│   ├── app.css
+│   ├── app.d.ts
+│   ├── app.html
+│   ├── index.test.ts
+│   ├── lib
+│   │   └── index.ts
+│   └── routes
+│       ├── +layout.svelte
+│       └── +page.svelte
+├── static
+│   └── favicon.png
+├── svelte.config.js
+├── tailwind.config.js
+├── tests
+│   └── test.ts
+├── tsconfig.json
+└── vite.config.ts
 ```
 
-You can preview the production build with `npm run preview`.
+All other modifications were made by me.
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+## Getting Started
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/knowthen/youtube-jh
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Create a `.env` file with your YouTube API key:
+
+   ```bash
+   YOUTUBE_API_KEY=<YOUR_YOUTUBE_API_KEY>
+   ```
+
+4. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+5. Open your browser and navigate to `http://localhost:5173` to access the app.
